@@ -25,7 +25,7 @@ int main(){
     }*/
 
     //BRUTE FORCE 2
-    vector<long long>ans;
+    /*vector<long long>ans;
     ans.push_back(2);  //pushing 2 in the ans
     ans.push_back(5);  //pushing 5 in the ans
     for(auto it:ans){
@@ -36,6 +36,25 @@ int main(){
             if(l<=n){
                 ans.push_back(l);
             }
+        }
+    }
+    for(auto it:ans){
+        cout<<it<<" ";
+    }*/
+
+
+    //OPTIMAL Approach
+    vector<long long>ans;
+    ans.push_back(2);  //pushing 2 in the ans
+    ans.push_back(5);  //pushing 5 in the ans
+    for(int i=0;i<ans.size();i++){   //size (2-->4(due to addition of a & b of 2)-->6(due to addition of a & b of 5))
+        long long x=ans[i];
+        long long a=x*10+2;
+        long long b=x*10+5;
+        if(a<=n && b<=n){
+            //dynamically increasing size while pushing a,b
+            ans.push_back(a);  
+            ans.push_back(b);
         }
     }
     for(auto it:ans){

@@ -6,8 +6,8 @@ int main(){
     cin>>n;
     
     //BRUTE FORCE APPROACH
-    //TC--->O(N^2)
-    vector<long long>ans;
+    //TC--->O(NlogN)
+    /*vector<long long>ans;
     for(long long i=2;i<=n;i++){
         string s1=to_string(i);
         string s2="";
@@ -18,6 +18,24 @@ int main(){
         }
         if(!s2.empty() && s2.size()==s1.size()){
             ans.push_back(stoll(s2));
+        }
+    }
+    for(auto it:ans){
+        cout<<it<<" ";
+    }*/
+
+    //BRUTE FORCE 2
+    vector<long long>ans;
+    ans.push_back(2);  //pushing 2 in the ans
+    ans.push_back(5);  //pushing 5 in the ans
+    for(auto it:ans){
+        string s1=to_string(it);    //converting them to string
+        for(auto it:ans){
+            string s2=to_string(it);   //iterating again and converting them to string
+            int l=stoll(s1+s2);        //concating s1 and s2 (2,5,22,25,52,55)
+            if(l<=n){
+                ans.push_back(l);
+            }
         }
     }
     for(auto it:ans){

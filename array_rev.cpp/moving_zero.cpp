@@ -11,7 +11,7 @@ int main(){
     
     //TC--->O(N)
     //SC--->O(N)
-    vector<int> temp;
+    /*vector<int> temp;
     int cnt=0;
     for(int i=0;i<n;i++){
         if(arr[i]==0){
@@ -25,6 +25,19 @@ int main(){
     }
     for(int i=0;i<temp.size();i++){
         cout<<temp[i]<<" ";
+    }*/
+
+    //TC--->O(N)
+    //SC--->O(1)
+    int i=0;
+    for(int j=0;j<n;j++){
+        if(arr[j]!=0){
+            swap(arr[i],arr[j]);
+            i++;
+        }
+    }
+    for(int i=0;i<n;i++){
+        cout<<arr[i]<<" ";
     }
 
 }

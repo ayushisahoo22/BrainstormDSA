@@ -18,8 +18,8 @@ using namespace std;
         return cnt;
 }*/
 
-//TC-->O(N^2)
-int minJumps(vector<int>& arr) {
+//TC-->O(N^2)---Not always applicable([3, 4, 3, 2, 5, 4, 3])
+/*int minJumps(vector<int>& arr) {
         int cnt=0;
         int indx=0;
         if (arr[0] == 0) return -1;
@@ -28,7 +28,7 @@ int minJumps(vector<int>& arr) {
             indx+=arr[indx];
             int maxi=arr[j+1];
             int best=j+1;
-            for(int i=j+1;i<=indx;i++){
+            for(int i=j+1;i<=indx && i<arr.size();i++){
                 if(maxi<arr[i]){
                     maxi=arr[i];
                     best=i;
@@ -39,7 +39,23 @@ int minJumps(vector<int>& arr) {
             cnt++;
         }
         return cnt;
+    }*/
+
+
+int minJumps(vector<int> arr){
+    int jump=0;
+    int end=0;
+    int farthest=0;
+    for(int i=0;i<arr.size()-1;i++){
+        farthest=max(farthest,i+arr[i]);
+        if(i==end){
+            jump++;
+            end=farthest;
+        }
     }
+    return jump;
+}
+
 
 int main(){
     int n;

@@ -31,7 +31,7 @@ using namespace std;
 //it might move us further away.
 //When all numbers are positive → sums always increase, so balance can only happen once.
 //When negatives exist → sums can oscillate, so you can skip over the equilibrium index completely.
-int findEquilibrium(vector<int> &arr) {
+/*int findEquilibrium(vector<int> &arr) {
     int n=arr.size();
     int i=0;int j=n-1;
     int sum1=0,sum2=0;
@@ -48,9 +48,33 @@ int findEquilibrium(vector<int> &arr) {
         return i;
     }
     return -1;
+}*/
+
+
+//Optimal approach-Prefix
+
+//At each index i:
+// Subtract arr[i] from totalSum → that becomes the right side sum.
+// Compare leftSum and totalSum (after subtraction).
+// If they’re equal, we’ve found the equilibrium index.
+// Then add arr[i] to leftSum and move on.
+
+int findEquilibrium(vector<int> &arr) {
+    int n=arr.size();
+    int totalSum=0;
+    for(auto it:arr){
+        totalSum+=it; //add up the elements at once
+    }
+    int leftSum=0;
+    for(int i=0;i<n;i++){
+        totalSum-=arr[i];  //will now work as right sum
+        if(leftSum==totalSum){
+            return i;
+        }
+        leftSum+=arr[i];
+    }
+    return -1;
 }
-
-
 int main(){
     int n;
     cout<<"Enter the value of n: ";

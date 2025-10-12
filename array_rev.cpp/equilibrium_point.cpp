@@ -52,7 +52,7 @@ using namespace std;
 
 
 //Optimal approach-Prefix
-
+//TC--->O(N)    SC--->O(1)
 //At each index i:
 // Subtract arr[i] from totalSum → that becomes the right side sum.
 // Compare leftSum and totalSum (after subtraction).

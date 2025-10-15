@@ -1,5 +1,10 @@
 #include<bits/stdc++.h>
 using namespace std;
+
+//select any index i such that 0 < i < words.length and words[i - 1] 
+//and words[i] are anagrams, and delete words[i] from words
+
+//func to check if two strings are anagrams
 bool isAnagram(string s,string t){
     if(s.size()!=t.size()){
         return false;
@@ -8,12 +13,13 @@ bool isAnagram(string s,string t){
     sort(t.begin(),t.end());
     return s==t;
 }
+
 vector<string> removeAnagrams(vector<string>& words) {
     vector<string> ans;
     ans.push_back(words[0]);
     for(int i=1;i<words.size();i++){
-        if(!isAnagram(words[i],words[i-1])){
-            ans.push_back(words[i]);
+        if(!isAnagram(words[i],words[i-1])){    //if the words[i] is not anagram
+            ans.push_back(words[i]);            //push it to ans
         }
     }
     return ans;

@@ -8,7 +8,7 @@ using namespace std;
 //Return or print the resulting list of numbers.
 
 //TC-->O(NlogN)
-vector < int > termsOfAP(int x) { 
+/*vector < int > termsOfAP(int x) { 
     vector<int>ans; 
     set<int>visited; //to store the visited i to skip in next iteration
     for(int i=1;i<=x;i++){ 
@@ -26,6 +26,20 @@ vector < int > termsOfAP(int x) {
         }
     } 
     return ans; 
+}*/
+
+//TC-->O(N)
+vector < int > termsOfAP(int x) {
+    vector<int>ans;
+    int n=1;
+    while(ans.size()<x){
+        int digit=3*n+2;
+        if(digit%4!=0){
+            ans.push_back(digit);
+        }
+        n++;
+    }
+    return ans;
 }
 
 int main(){

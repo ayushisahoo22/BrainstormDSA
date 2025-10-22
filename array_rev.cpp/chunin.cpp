@@ -14,7 +14,7 @@ using namespace std;
 //       1 2 4  ans will be 3      
 
 //Finds minimum value and its first column index, then directly checks only that column.
-vector<int> chuninNinja(int n, int m, vector<vector<int>> arr) {
+/*vector<int> chuninNinja(int n, int m, vector<vector<int>> arr) {
     vector<int> ans;
     for (int i = 0; i < n; i++) {
         int mini = INT_MAX;
@@ -40,6 +40,32 @@ vector<int> chuninNinja(int n, int m, vector<vector<int>> arr) {
         }
     }
     return ans;
+}*/
+
+
+//Finds minimum value in the row, then checks every occurrence of that value to see if it’s also column-max.
+//eg --> 3 3 3
+//       3 3 3    ans will be 3 3 3 3 3 3 3 3 3
+//       3 3 3
+//but for the above code it will be 3 only
+
+vector<int> chuninNinja(int n, int m, vector<vector<int>> arr){
+    vector<int> ans; for (int i = 0; i < n; i++){
+        int mini = *min_element(arr[i].begin(), arr[i].end()); 
+        for(int j = 0; j < m; j++) {
+            if (arr[i][j] == mini) {
+                bool isMax = true;
+                for (int k = 0; k < n; k++){ // check column 
+                    if (arr[k][j] > arr[i][j]){
+                        isMax = false; break;
+                    } 
+                }if (isMax){
+                    ans.push_back(arr[i][j]); 
+                } 
+            } 
+        } 
+    }
+    return ans; 
 }
 
 

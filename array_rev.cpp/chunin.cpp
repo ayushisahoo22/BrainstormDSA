@@ -51,13 +51,21 @@ using namespace std;
 
 vector<int> chuninNinja(int n, int m, vector<vector<int>> arr){
     vector<int> ans; for (int i = 0; i < n; i++){
-        int mini = *min_element(arr[i].begin(), arr[i].end()); 
+        //min_element() (from <algorithm>) finds the smallest element in that row.
+        //It returns an iterator, so we use * to get the actual value.
+        int mini = *min_element(arr[i].begin(), arr[i].end());  //Find the Minimum in the Current Row
         for(int j = 0; j < m; j++) {
+
+            //Only process columns j where the current element equals the row’s minimum (mini).
+            //This allows us to handle multiple minimum values in the same row.
             if (arr[i][j] == mini) {
                 bool isMax = true;
-                for (int k = 0; k < n; k++){ // check column 
+                for (int k = 0; k < n; k++){ // check column
+                    
+                    //if other ele is max than the mini, break the loop
                     if (arr[k][j] > arr[i][j]){
-                        isMax = false; break;
+                        isMax = false; 
+                        break;
                     } 
                 }if (isMax){
                     ans.push_back(arr[i][j]); 

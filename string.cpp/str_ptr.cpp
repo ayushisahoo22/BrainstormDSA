@@ -11,6 +11,7 @@ using namespace std;
 
 vector<int> findAnagramsIndices(string str, string ptr, int n, int m){
     string sortedPTR=ptr;
+    //sorting later bcs sort() don't return anything
     sort(sortedPTR.begin(),sortedPTR.end());
     vector<int>ans;
     int i=0,j=0;
@@ -19,7 +20,7 @@ vector<int> findAnagramsIndices(string str, string ptr, int n, int m){
         temp+=str[j];
         if(temp.size()>m){
             temp.erase(temp.begin());
-            i++;
+            i++;   //shrinking i only when the condition breaks
         }
         if(temp.size()==m){
             string sortedTemp=temp;
@@ -28,7 +29,7 @@ vector<int> findAnagramsIndices(string str, string ptr, int n, int m){
                 ans.push_back(i);
             }
         }
-        j++;
+        j++;     //else expanding the j
     }
     return ans;
 }

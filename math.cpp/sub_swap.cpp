@@ -7,14 +7,14 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int main() {
+/*int main() {
 	int t;
 	cin>>t;
 	while(t--){
 	    int x,y;
 	    cin>>x>>y;
 	    int temp;
-	    while(x!=0){
+	    while(x!=0){   //continuous subtraction raising tle
 	        if(x>y){
 	            temp=x;
 	            x=y;
@@ -24,6 +24,23 @@ int main() {
 	            x=y-x;
 	            y=temp;
 	        }
+	    }
+	    cout<<y<<endl;
+	}
+
+}*/
+
+int main() {
+	int t;
+	cin>>t;
+	while(t--){
+	    int x,y;
+	    cin>>x>>y;
+	    int temp;
+	    while(x!=0){
+	        int temp=x;
+	        x=y%x;
+	        y=temp;
 	    }
 	    cout<<y<<endl;
 	}

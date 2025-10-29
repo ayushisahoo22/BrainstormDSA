@@ -4,7 +4,7 @@ using namespace std;
 //consonant will be swapped with consonant and vowel will be swapped with vowels only
 bool isVowel(char c){  //will always return a val-true of false
     string s="AEIOU";
-    if(s.find(c)!=string::npos){
+    if(s.find(c)!=string::npos){  //in string there is no s.end() we will use string::npos
         return true;
     }
     return false;   //can't skip this

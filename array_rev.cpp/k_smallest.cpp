@@ -1,7 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-int kthSmallest(vector<int>& v, int n, int k) {
+/*int kthSmallest(vector<int>& v, int n, int k) {
 int k_small;   // to update with the next smallest element
 while(k--){
     int smallest=INT_MAX;
@@ -16,6 +16,19 @@ while(k--){
     k_small=smallest;  //giving the value of smallest as each iteration initiate as smallest=INT_MAX
     }
     return k_small;
+}*/
+
+//using priority que-bcz it stores the value in ascending order
+int kthSmallest(vector<int>& arr, int n, int k) {
+    //we used greater<int> so that it will store in descending order
+	priority_queue<int,vector<int>,greater<int>>pq;
+	for(int x:arr){
+		pq.push(x);
+	}
+    //will pop from the top till k-1
+	for(int i=1;i<k;i++) pq.pop();
+    //at k returning the value
+	return pq.top();
 }
 int main(){
     int n,k;

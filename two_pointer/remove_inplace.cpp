@@ -3,7 +3,7 @@ using namespace std;
 
 //can be solved using set and unordered map..but space complexity will be O(N)
 //here space complexity is O(1)
-int removeDuplicates(vector<int>& nums) {
+/*int removeDuplicates(vector<int>& nums) {
     // If array is empty, return 0 directly
     if (nums.empty()) return 0;
 
@@ -34,4 +34,33 @@ int main() {
         cout << nums[x] << " ";
     }
     cout << endl;
+}*/
+
+//returning the unique elements in a vector
+vector<int> func(vector<int>arr,int n){
+    int i=0;
+    vector<int> ans;
+    ans.push_back(arr[i]); //first element is always unique
+    for(int j=1;j<n;j++){
+        if(arr[i]!=arr[j]){
+            i++;
+            swap(arr[i],arr[j]);
+            ans.push_back(arr[i]);
+        }
+    }
+    return ans;
+}
+
+int main(){
+    int n;
+    cout<<"Enter n: ";
+    cin>>n;
+    vector<int> arr(n);
+    for(int i=0;i<n;i++){
+        cin>>arr[i];
+    }
+    vector<int> k=func(arr,n);
+    for(int i=0;i<k.size();i++){
+        cout<<k[i]<<" ";
+    }
 }

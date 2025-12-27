@@ -14,7 +14,9 @@ int maxLen(vector<int>arr,int k){
             sum-=arr[i];
             i++;
         }
-        maxi=max(sum,maxi);
+        if(j-i+1==k){
+            maxi=max(maxi,sum);
+        }
     }
     return maxi;
 }

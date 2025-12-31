@@ -18,9 +18,15 @@ while(k--){
     return k_small;
 }*/
 
-//using priority que-bcz it stores the value in ascending order
+//using priority que:
+//Default priority_queue is a max-heap
+//Top element is always the maximum
+//Elements are popped in decreasing order
+
 int kthSmallest(vector<int>& arr, int n, int k) {
-    //we used greater<int> so that it will store in descending order
+    // Using greater<int> makes the priority_queue a min-heap,
+    // so the smallest element comes out first.
+    
 	priority_queue<int,vector<int>,greater<int>>pq;
 	for(int x:arr){
 		pq.push(x);
